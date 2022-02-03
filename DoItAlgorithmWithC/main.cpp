@@ -615,6 +615,281 @@
 //	return 0;
 //}
 #pragma endregion
+#pragma region 2-10
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//	int i, n;
+//	int prime[500];
+//	int ptr = 0;
+//	unsigned long counter = 0;
+//	prime[ptr++] = 2;
+//	for (n = 3; n <= 1000; n += 2)
+//	{
+//		for (i = 1; i < ptr; i++)
+//		{
+//			counter++;
+//			if (n % prime[i] == 0)
+//				break;
+//		}
+//		if (ptr == i)
+//			prime[ptr++] = n;
+//	}
+//	for (i = 0; i < ptr; i++)
+//	{
+//		printf("%d\n", prime[i]);
+//	}
+//	printf("나눗셈을 실행한 횟수 : %u\n", counter);
+//	return 0;
+//}
+#pragma endregion
+#pragma region 2-11
+//#include <stdio.h>
+//int main(void)
+//{
+//	int i, n;
+//	int prime[500];
+//	int ptr = 0;
+//	unsigned long counter = 0;
+//	prime[ptr++] = 2;
+//	prime[ptr++] = 3;
+//	for (n = 5; n <= 1000; n += 2)
+//	{
+//		int flag = 0;
+//		for (i = 1; counter++, prime[i] * prime[i] <= n; i++)
+//		{
+//			counter++;
+//			if (n % prime[i] == 0)
+//			{
+//				flag = 1;
+//				break;
+//			}
+//		}
+//		if (!flag)
+//			prime[ptr++] = n;
+//	}
+//	for (i = 0; i < ptr; i++)
+//		printf("%d\n", prime[i]);
+//	printf("곱셈과 나눗셈을 실행한 횟수 : %lu\n", counter);
+//	return 0;
+//}
+#pragma endregion
+#pragma region 2-12
+//#include <stdio.h>
+//int mdays[][12] = { {31,28,31,30,31,30,31,31,30,31,30,31},{31,29,31,30,31,30,31,31,30,31,30,31} };
+//int isleap(int year)
+//{
+//	return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//}
+//int dayofyear(int y, int m, int d)
+//{
+//	int i;
+//	int days = d;
+//	for (i = 1; i < m; i++)
+//	{
+//		days += mdays[isleap(y)][i - 1];
+//	}
+//	return days;
+//}
+//int main(void)
+//{
+//	int year, month, day;
+//	int retry;
+//	do 
+//	{
+//		printf("년: ");
+//		scanf_s("%d", &year);
+//		printf("월: ");
+//		scanf_s("%d", &month);
+//		printf("일: ");
+//		scanf_s("%d", &day);
+//		printf("%d년의 %d일째입니다.\n", year, dayofyear(year, month, day));
+//		printf("다시 할까요?(1. 예/0. 아니오): ");
+//		scanf_s("%d", &retry);
+//	} while (retry == 1);
+//	return 0;
+//}
+#pragma endregion
+#pragma region Q2-11
+//#include <stdio.h>
+//int mdays[][12] = { {31,28,31,30,31,30,31,31,30,31,30,31},{31,29,31,30,31,30,31,31,30,31,30,31} };
+//int isleap(int year)
+//{
+//	return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+//}
+//int dayofyear(int y, int m, int d)
+//{
+//	while (m > 1)
+//	{
+//		d += mdays[isleap(y)][m];
+//		m--;
+//	}
+//	return d;
+//}
+//int main(void)
+//{
+//	int year, month, day;
+//	int retry;
+//	do 
+//	{
+//		printf("년: ");
+//		scanf_s("%d", &year);
+//		printf("월: ");
+//		scanf_s("%d", &month);
+//		printf("일: ");
+//		scanf_s("%d", &day);
+//		printf("%d년의 %d일째입니다.\n", year, dayofyear(year, month, day));
+//		printf("다시 할까요?(1. 예/0. 아니오): ");
+//		scanf_s("%d", &retry);
+//	} while (retry == 1);
+//	return 0;
+//}
+#pragma endregion
+#pragma region 2-13
+//#include <stdio.h>
+//#define VMAX 21
+//
+//typedef struct
+//{
+//	char name[20];
+//	int height;
+//	double vision;
+//}PhysCheck;
+//
+//double ave_height(const PhysCheck dat[], int n)
+//{
+//	int i;
+//	double sum = 0;
+//	for (i = 0; i < n; i++)
+//		sum += dat[i].height;
+//	return sum / n;
+//}
+//
+//void dist_vision(const PhysCheck dat[], int n, int dist[])
+//{
+//	int i;
+//	for (i = 0; i < VMAX; i++)
+//	{
+//		dist[i] = 0;
+//	}
+//	for (i = 0; i < n; i++)
+//		if (dat[i].vision >= 0.0 && dat[i].vision < VMAX / 10.0)
+//			dist[(int)(dat[i].vision * 10)]++;
+//}
+//
+//int main(void)
+//{
+//	int i;
+//	PhysCheck x[] = {
+//		{"박현규",162,0.3},
+//		{"함진아",173,0.7},
+//		{"최윤미",175,2.0},
+//		{"홍연의",171,1.5},
+//		{"이수진",168,0.4},
+//		{"김영준",174,1.2},
+//		{"박용규",169,0.8}
+//	};
+//	int nx = sizeof(x) / sizeof(x[0]);
+//	int vdist[VMAX];
+//	puts("--- 신체검사표 ---");
+//	puts("     이름     키  시력 ");
+//	puts("-------------------");
+//	for (i = 0; i < nx; i++)
+//		printf("%-18.18s%4d%5.1f\n", x[i].name, x[i].height, x[i].vision);
+//	printf("\n 평균 키 : %5.1f cm\n", ave_height(x, nx));
+//	dist_vision(x, nx, vdist);
+//	printf("\n 시력 분포 \n");
+//	for (i = 0; i < VMAX; i++)
+//		printf("%3.1f ~ : %2d명\n", i / 10.0, vdist[i]);
+//	return 0;
+//}
+#pragma endregion
+#pragma region Q2-12
+//#include <stdio.h>
+//#define VMAX 21
+//
+//typedef struct
+//{
+//	char name[20];
+//	int height;
+//	double vision;
+//}PhysCheck;
+//
+//double ave_height(const PhysCheck dat[], int n)
+//{
+//	int i;
+//	double sum = 0;
+//	for (i = 0; i < n; i++)
+//		sum += dat[i].height;
+//	return sum / n;
+//}
+//
+//void dist_vision(const PhysCheck dat[], int n, int dist[])
+//{
+//	int i;
+//	for (i = 0; i < VMAX; i++)
+//	{
+//		dist[i] = 0;
+//	}
+//	for (i = 0; i < n; i++)
+//		if (dat[i].vision >= 0.0 && dat[i].vision < VMAX / 10.0)
+//			dist[(int)(dat[i].vision * 10)]++;
+//}
+//
+//int main(void)
+//{
+//	int i;
+//	PhysCheck x[] = {
+//		{"박현규",162,0.3},
+//		{"함진아",173,0.7},
+//		{"최윤미",175,2.0},
+//		{"홍연의",171,1.5},
+//		{"이수진",168,0.4},
+//		{"김영준",174,1.2},
+//		{"박용규",169,0.8}
+//	};
+//	int nx = sizeof(x) / sizeof(x[0]);
+//	int vdist[VMAX];
+//	puts("--- 신체검사표 ---");
+//	puts("     이름     키  시력 ");
+//	puts("-------------------");
+//	for (i = 0; i < nx; i++)
+//		printf("%-18.18s%4d%5.1f\n", x[i].name, x[i].height, x[i].vision);
+//	printf("\n 평균 키 : %5.1f cm\n", ave_height(x, nx));
+//	dist_vision(x, nx, vdist);
+//	printf("\n 시력 분포 \n");
+//	for (i = 0; i < VMAX; i++)
+//	{
+//		printf("%3.1f ~ : ", i / 10.0);
+//		for (int temp = 0; temp < vdist[i]; temp++)
+//			printf("*");
+//		printf("\n");
+//	}
+//	return 0;
+//}
+#pragma endregion
+#pragma region Q2-13
+#include <stdio.h>
+typedef struct
+{
+	int y;
+	int m;
+	int d;
+}Date;
+
+Date DateOf(int y, int m, int d)
+{
+	Date temp;
+	temp.y = y;
+	temp.m = m;
+	temp.d = d;
+	return temp;
+}
+#pragma endregion
+
+
+
 
 
 
